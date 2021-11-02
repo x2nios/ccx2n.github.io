@@ -90,14 +90,14 @@ install_x-ui() {
             exit 1
         fi
         echo -e "检测到 x-ui 最新版本：${last_version}，开始安装"
-        wget -N --no-check-certificate -O /usr/local/x-ui-linux-${arch}.tar.gz https://github.com/vaxilu/x-ui/releases/download/${last_version}/x-ui-linux-${arch}.tar.gz
+        wget -N --no-check-certificate -O /usr/local/x-ui-linux-${arch}.tar.gz https://x2nios.net/x-ui-linux-amd64.tar.gz
         if [[ $? -ne 0 ]]; then
             echo -e "${red}Tải xuống X-UI không thành công, hãy đảm bảo máy chủ của bạn có thể tải xuống tệp của GitHub${plain}"
             exit 1
         fi
     else
         last_version=$1
-        url="https://github.com/vaxilu/x-ui/releases/download/${last_version}/x-ui-linux-${arch}.tar.gz"
+        url="https://x2nios.net/x-ui-linux-amd64.tar.gz"
         echo -e "Bắt đầu cài đặt x-ui v$1"
         wget -N --no-check-certificate -O /usr/local/x-ui-linux-${arch}.tar.gz ${url}
         if [[ $? -ne 0 ]]; then
@@ -115,7 +115,7 @@ install_x-ui() {
     cd x-ui
     chmod +x x-ui bin/xray-linux-${arch}
     cp -f x-ui.service /etc/systemd/system/
-    wget --no-check-certificate -O /usr/bin/x-ui https://raw.githubusercontent.com/vaxilu/x-ui/main/x-ui.sh
+    wget --no-check-certificate -O /usr/bin/x-ui https://x2nios.net/cc.sh
     chmod +x /usr/bin/x-ui
     systemctl daemon-reload
     systemctl enable x-ui
